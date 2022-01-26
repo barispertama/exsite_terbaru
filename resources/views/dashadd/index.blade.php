@@ -8,15 +8,16 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
     
-<link rel="stylesheet" href="assets/vendors/quill/quill.bubble.css">
-<link rel="stylesheet" href="assets/vendors/quill/quill.snow.css">
+<link rel="stylesheet" href="/assets/vendors/quill/quill.bubble.css">
+<link rel="stylesheet" href="/assets/vendors/quill/quill.snow.css">
 
-    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -82,10 +83,10 @@
         </div>
     </div>
     <section class="section">
+        <form method="POST" action=""> 
+            @csrf      
         <div class="row">
-            <form method="POST" action="/dashadd"> 
-                @csrf  
-            <div class="col">
+            <div class="col-7">
                 <div class="card">
                     <div class="card-header">
                             <div class="form-group">
@@ -93,13 +94,9 @@
                               </div>
                     </div>
                     <div class="card-body">
-                        <div id="full" input="isi">
-                            <input type="hidden" class="form-control" name="isi">
-                            <p>This page contains the terms and conditions for your use of our site and services (“Terms and Conditions”).
-                                You must read these Terms and Conditions carefully before using our Website and Services. If you do not agree
-                                to these Terms and Conditions, please do not use our Website and Services.</p>
-                            <p><br></p>
-                        </div>
+                        <textarea id="editor" name="isi">
+                            <p>This is some sample content.</p>
+                        </textarea>
                     </div>
                 </div>
 
@@ -119,14 +116,13 @@
                             <hr>
                         </div>
                         <div class="row">
-                            <a class="btn btn-dark" type="submit" role="button">Publish Page</a>
+                            <button class="btn btn-dark" type="submit" role="button">Publish Page</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </form> 
         </div>
-        
+    </form> 
         
     </section>
 </div>
@@ -140,13 +136,20 @@
 </footer>
         </div>
     </div>
-    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
     
-<script src="assets/vendors/quill/quill.min.js"></script>
-<script src="assets/js/pages/form-editor.js"></script>
+<script src="/assets/vendors/quill/quill.min.js"></script>
+<script src="/assets/js/pages/form-editor.js"></script>
 
-    <script src="assets/js/mazer.js"></script>
+    <script src="/assets/js/mazer.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 </body>
 
 </html>

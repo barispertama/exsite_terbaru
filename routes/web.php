@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashaddController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -52,8 +53,7 @@ Route::post('/signup', [SignupController::class,'postsignup']);
 
 Route::get('/dash', [DashboardController::class,'index'])->middleware('auth');
 Route::get('/dash', [DashboardController::class,'indexpos'])->middleware('auth');
-Route::get('/dashadd', [DashboardController::class,'addnew'])->middleware('auth');
-Route::resource('/dashadd', DashboardController::class)->middleware('auth');
+Route::resource('dashadd', DashaddController::class)->middleware('auth');
 
 Route::post('/posts', [PostController::class,'index']);
 

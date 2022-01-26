@@ -123,6 +123,14 @@
     </div>
     <section class="section">
         <div class="row">
+
+            @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif            
+            
             <div class="col-sm-3">
                 <a href="dashadd">
                     <div class="btn card bg-light-secondary">
@@ -135,7 +143,7 @@
 
             @foreach ($posts as $post)
             <div class="col-sm-3">
-                <a href="/{{ $post->company }}/{{ $post->slug }}">
+                <a href="/dashadd/{{ $post->id }}/edit">
                     <div class="btn card bg-light-secondary">
                         <div class="card-body">
                             <p><font color="green"> 
